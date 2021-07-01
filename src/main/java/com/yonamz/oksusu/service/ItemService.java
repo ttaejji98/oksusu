@@ -36,7 +36,8 @@ public class ItemService {
                     .content(item.getContent())
                     .writer(item.getWriter())
                     .deadline(item.getDeadline())
-                    .starting(item.getStarting())
+                    .starting_bid(item.getStarting_bid())
+                    .reg_date(item.getReg_date())
                     .build();
 
             itemForms.add(itemForm);
@@ -55,7 +56,8 @@ public class ItemService {
                 .writer(item.getWriter())
                 .content(item.getContent())
                 .deadline(item.getDeadline())
-                .starting(item.getStarting())
+                .starting_bid(item.getStarting_bid())
+                .reg_date(item.getReg_date())
                 .build();
         return itemForm;
     }
