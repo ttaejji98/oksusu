@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
 <body>
-<h2 th:text="${itemForm.title}"></h2>
-<p>작성일 : <p th:text="${itemForm.reg_date}" /> </p>
-<p>작성자 : [[${itemForm.writer}]]</p>
+        <h2 th:text="${itemForm.title}"></h2>
+        <p th:inline="text">작성일 : [[${#temporals.format(item.createdDate, 'yyyy-MM-dd HH:mm')}]]</p>
+        <p>작성자 : [[${itemForm.writer}]]</p>
+        <textarea th:text="${itemForm.content}"></textarea>
 
-<p th:text="${itemForm.content}"></p>
-
-<!-- 수정/삭제 -->
-<div>
-    <form id="update-form" th:action="@{'/items/' + ${itemForm.item_no}}" method="post">
-        <input type="hidden" name="_method" value="put"/>
-        <button id="update-btn">수정</button>
-    </form>
+        <!-- 수정/삭제 -->
+        <div>
+            <a th:href="@{'/items/edit/' + ${itemForm.item_no}}">
+                <button>수정</button>
+            </a>
 
 
-    <form id="delete-form" th:action="@{'/items/' + ${itemForm.item_no}}" method="post">
-        <input type="hidden" name="_method" value="delete"/>
-        <button id="delete-btn">삭제</button>
-    </form>
-</div>
+            <form id="delete-form" th:action="@{'/items/' + ${itemForm.item_no}}" method="post">
+                <input type="hidden" name="_method" value="delete"/>
+                <button id="delete-btn">삭제</button>
+            </form>
+        </div>
 
 
 </body>

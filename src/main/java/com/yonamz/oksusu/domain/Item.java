@@ -8,38 +8,35 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.time.LocalDate;
-
 
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Item {
+@Table(name = "item")
+public class Item extends TimeEntity{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long item_no;
 
-    @Column
+    @Column(length = 100, nullable = false)
     private String title;
-    @Column
+    @Column(length = 100, nullable = false)
     private String writer;
-    @Column
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
-    @Column
+    @Column(length = 100, nullable = false)
     private int starting_bid;
-    @Column
+    @Column(length = 100, nullable = false)
     private Date deadline;
-    @Column
-    private LocalDate reg_date;
+
 
     @Builder
-    public Item(Long item_no, String title, String writer, String content, int starting_bid, Date deadline, LocalDate reg_date) {
+    public Item(Long item_no, String title, String writer, String content, int starting_bid, Date deadline) {
         this.item_no = item_no;
         this.title = title;
         this.writer = writer;
         this.content = content;
         this.starting_bid = starting_bid;
         this.deadline = deadline;
-        this.reg_date=reg_date;
     }
 }

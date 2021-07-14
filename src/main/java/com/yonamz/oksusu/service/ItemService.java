@@ -3,12 +3,14 @@ package com.yonamz.oksusu.service;
 import com.yonamz.oksusu.controller.ItemForm;
 import com.yonamz.oksusu.domain.Item;
 import com.yonamz.oksusu.repository.ItemRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 
 @Service
 public class ItemService {
@@ -37,7 +39,7 @@ public class ItemService {
                     .writer(item.getWriter())
                     .deadline(item.getDeadline())
                     .starting_bid(item.getStarting_bid())
-                    .reg_date(item.getReg_date())
+                    .createdDate(item.getCreatedDate())
                     .build();
 
             itemForms.add(itemForm);
@@ -57,7 +59,6 @@ public class ItemService {
                 .content(item.getContent())
                 .deadline(item.getDeadline())
                 .starting_bid(item.getStarting_bid())
-                .reg_date(item.getReg_date())
                 .build();
         return itemForm;
     }

@@ -20,8 +20,9 @@
                 <td><textarea th:text="${item.content}"></textarea></td>
                 <td th:text="${item.deadline}"></td>
                 <td th:text="${item.starting_bid}"></td>
-                <td th:text="${item.reg_date}"></td>
-
+                <td>
+                    <span th:text="${#temporals.format(item.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+                </td>
             </tr>
             </tbody>
         </table>

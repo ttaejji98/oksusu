@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -12,13 +13,15 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ItemForm {
 
-    private long item_no;
+    private Long item_no;
     private String writer;
     private String title;
     private String content;
     private Date deadline;
     private int starting_bid;
-    private LocalDate reg_date;
+
+    private LocalDateTime createdDate;
+    private LocalDateTime modifiedDate;
 
     public Item toEntity(){
         Item build = Item.builder()
@@ -28,19 +31,19 @@ public class ItemForm {
                 .content(content)
                 .starting_bid(starting_bid)
                 .deadline(deadline)
-                .reg_date(LocalDate.now())
                 .build();
         return build;
     }
 
     @Builder
-    public ItemForm(long item_no, String writer, String title, String content, Date deadline, int starting_bid, LocalDate reg_date) {
+    public ItemForm(Long item_no, String writer, String title, String content, Date deadline, int starting_bid, LocalDateTime createdDate, LocalDateTime modifiedDate) {
         this.item_no = item_no;
         this.writer = writer;
         this.title = title;
         this.content = content;
         this.deadline = deadline;
         this.starting_bid = starting_bid;
-        this.reg_date=reg_date;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
     }
 }
