@@ -4,7 +4,6 @@ import com.yonamz.oksusu.domain.Item;
 import lombok.*;
 
 import java.sql.Date;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
