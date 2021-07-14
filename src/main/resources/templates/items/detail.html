@@ -2,7 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
         <h2 th:text="${itemForm.title}"></h2>
-        <p th:inline="text">작성일 : [[${#temporals.format(item.createdDate, 'yyyy-MM-dd HH:mm')}]]</p>
+<!--
+        * 이건 모르겠다.... 작성일자 보이는거....ㅠㅠㅠ*
+        <span th:text="${#temporals.format(itemForm.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+-->
         <p>작성자 : [[${itemForm.writer}]]</p>
         <textarea th:text="${itemForm.content}"></textarea>
 
