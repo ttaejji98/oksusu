@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Entity
@@ -28,15 +30,18 @@ public class Item extends TimeEntity{
     private int starting_bid;
     @Column(length = 100, nullable = false)
     private Date deadline;
-
+    @Column(length = 100, nullable = false)
+    private int cnt;
 
     @Builder
-    public Item(Long item_no, String title, String writer, String content, int starting_bid, Date deadline) {
+    public Item(Long item_no, String title, String writer, String content, int starting_bid, Date deadline, int cnt) {
         this.item_no = item_no;
         this.title = title;
         this.writer = writer;
         this.content = content;
         this.starting_bid = starting_bid;
         this.deadline = deadline;
+        this.cnt = cnt;
     }
+
 }

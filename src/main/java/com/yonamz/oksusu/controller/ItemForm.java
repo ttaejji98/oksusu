@@ -18,6 +18,7 @@ public class ItemForm {
     private String content;
     private Date deadline;
     private int starting_bid;
+    private int cnt;
 
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
@@ -30,18 +31,20 @@ public class ItemForm {
                 .content(content)
                 .starting_bid(starting_bid)
                 .deadline(deadline)
+                .cnt(cnt)
                 .build();
         return build;
     }
 
     @Builder
-    public ItemForm(Long item_no, String writer, String title, String content, Date deadline, int starting_bid, LocalDateTime createdDate, LocalDateTime modifiedDate) {
+    public ItemForm(Long item_no, String writer, String title, String content, Date deadline, int starting_bid, int cnt, LocalDateTime createdDate, LocalDateTime modifiedDate) {
         this.item_no = item_no;
         this.writer = writer;
         this.title = title;
         this.content = content;
         this.deadline = deadline;
         this.starting_bid = starting_bid;
+        this.cnt = cnt;
         this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;
     }

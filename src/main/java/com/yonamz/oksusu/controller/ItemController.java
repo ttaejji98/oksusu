@@ -1,9 +1,12 @@
 package com.yonamz.oksusu.controller;
 
 import com.yonamz.oksusu.service.ItemService;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -28,9 +31,11 @@ public class ItemController {
     }
 
     @GetMapping("/items")
-    public String list(Model model){
+    public String list(Long item_no, Model model){
         List<ItemForm> items = itemService.getItemList();
         model.addAttribute("items", items);
+        model.addAttribute("view", itemService.updateCount(item_no));
+
         return "items/itemsList";
     }
 
@@ -61,6 +66,7 @@ public class ItemController {
         itemService.deletePost(item_no);
         return "redirect:/";
     }
+
 
 
 }

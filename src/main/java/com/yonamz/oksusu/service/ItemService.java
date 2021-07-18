@@ -37,6 +37,7 @@ public class ItemService {
                     .writer(item.getWriter())
                     .deadline(item.getDeadline())
                     .starting_bid(item.getStarting_bid())
+                    .cnt(item.getCnt())
                     .createdDate(item.getCreatedDate())
                     .build();
 
@@ -48,6 +49,7 @@ public class ItemService {
     @Transactional
     public ItemForm getPost(Long item_no){
         Optional<Item> itemWrapper = itemRepository.findById(item_no);
+        itemRepository.updateCount(item_no);
         Item item = itemWrapper.get();
 
         ItemForm itemForm = ItemForm.builder()
@@ -57,6 +59,7 @@ public class ItemService {
                 .content(item.getContent())
                 .deadline(item.getDeadline())
                 .starting_bid(item.getStarting_bid())
+                .cnt(item.getCnt())
                 .build();
         return itemForm;
     }
@@ -66,5 +69,9 @@ public class ItemService {
         itemRepository.deleteById(item_no);
     }
 
+    @Transactional
+    public int updateCount(Long item_no){
+        return itemRepository.updateCount(item_no);
+    }
 
 }
